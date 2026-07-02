@@ -109,9 +109,9 @@
       .hero {
         position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.55fr);
+        grid-template-columns: minmax(0, 0.82fr) minmax(390px, 0.68fr);
         align-items: start;
-        gap: clamp(36px, 7vw, 118px);
+        gap: clamp(34px, 5vw, 78px);
         padding: clamp(36px, 5.6vw, 72px) clamp(18px, 5vw, 72px) 48px;
         width: 100%;
         max-width: 100vw;
@@ -132,6 +132,7 @@
       }
 
       .hero-main,
+      .hero-side,
       .hero-links {
         position: relative;
         z-index: 1;
@@ -224,9 +225,9 @@
       }
 
       .skill-demo {
-        width: min(100%, 660px);
-        margin-top: 22px;
-        padding: 18px;
+        width: 100%;
+        margin-top: 0;
+        padding: 20px;
         background: rgba(251, 248, 238, 0.74);
         border: 1px solid var(--line-dark);
         box-shadow: 0 18px 46px rgba(28, 32, 24, 0.1);
@@ -248,7 +249,7 @@
 
       .skill-demo textarea {
         width: 100%;
-        min-height: 74px;
+        min-height: 88px;
         resize: vertical;
         padding: 13px 14px;
         border: 1px solid rgba(21, 25, 20, 0.26);
@@ -267,7 +268,7 @@
 
       .skill-demo button {
         align-self: stretch;
-        min-width: 118px;
+        min-width: 112px;
         border: 1px solid var(--charcoal);
         background: var(--charcoal);
         color: #f7f1e3;
@@ -347,6 +348,13 @@
         white-space: nowrap;
       }
 
+      .hero-side {
+        display: grid;
+        gap: 16px;
+        align-self: start;
+        margin-top: clamp(22px, 3.2vw, 42px);
+      }
+
       .hero-proof {
         margin-top: 26px;
         display: grid;
@@ -384,9 +392,9 @@
       }
 
       .hero-links {
-        width: min(100%, 390px);
-        justify-self: end;
-        margin-top: clamp(86px, 11vw, 138px);
+        width: 100%;
+        justify-self: stretch;
+        margin-top: 0;
       }
 
       .hero-links-kicker {
@@ -407,17 +415,19 @@
       }
 
       .platform-links {
-        margin-top: 18px;
+        margin-top: 12px;
         display: grid;
-        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
       }
 
       .platform-link {
         display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 18px;
+        grid-template-columns: 1fr;
+        gap: 12px;
         align-items: center;
-        padding: 18px 20px;
+        min-height: 112px;
+        padding: 14px;
         background: rgba(251, 248, 238, 0.8);
         border: 1px solid var(--line-dark);
         box-shadow: 0 18px 46px rgba(28, 32, 24, 0.08);
@@ -436,7 +446,7 @@
       .platform-link strong {
         display: block;
         color: var(--green-2);
-        font-size: 22px;
+        font-size: 18px;
         line-height: 1.1;
       }
 
@@ -444,7 +454,7 @@
         display: block;
         margin-top: 6px;
         color: #566052;
-        font-size: 13px;
+        font-size: 12px;
         line-height: 1.42;
         font-weight: 760;
       }
@@ -452,12 +462,12 @@
       .platform-link i {
         display: grid;
         place-items: center;
-        width: 34px;
-        height: 34px;
+        width: 28px;
+        height: 28px;
         background: var(--charcoal);
         color: #f7f1e3;
         font-style: normal;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 900;
       }
 
@@ -1199,6 +1209,11 @@
           margin-top: 8px;
         }
 
+        .hero-side {
+          width: min(100%, 720px);
+          margin-top: 8px;
+        }
+
         .product-visual {
           position: relative;
           right: auto;
@@ -1254,7 +1269,12 @@
           width: 100%;
         }
 
+        .platform-links {
+          grid-template-columns: 1fr;
+        }
+
         .platform-link {
+          min-height: 0;
           padding: 16px;
         }
 
@@ -1366,21 +1386,6 @@
               复制口令给Agent
             </button>
 
-            <form class="skill-demo" data-skill-demo>
-              <label for="skill-demo-query">输入你的真实需求，演示推荐 Top5 Skill</label>
-              <div class="skill-demo-row">
-                <textarea
-                  id="skill-demo-query"
-                  name="query"
-                  placeholder="例如：帮我追踪 AI Agent 行业最新新闻，生成带来源的晨报"
-                ></textarea>
-                <button type="submit">推荐 Skill</button>
-              </div>
-              <div class="skill-demo-results" data-skill-demo-results aria-live="polite">
-                <div class="skill-demo-empty">这是演示版：先用 mock 数据模拟 meyo-skill-finder 的推荐结果。</div>
-              </div>
-            </form>
-
             <div class="hero-proof" aria-label="核心市场数据">
               <div class="proof-item">
                 <strong>50k+</strong>
@@ -1397,45 +1402,62 @@
             </div>
           </div>
 
-          <aside class="hero-links" data-reveal aria-label="meyo-skill-finder 平台链接">
-            <div class="hero-links-kicker">Published On</div>
-            <div class="platform-links">
-              <a
-                class="platform-link"
-                href="https://skillhub.cn/skills/meyo-skill-finder"
-                target="_blank"
-                rel="noopener"
-              >
-                <span>
-                  <strong>SkillHub</strong>
-                  <span>查看 meyo-skill-finder 的 SkillHub 页面</span>
-                </span>
-                <i aria-hidden="true">↗</i>
-              </a>
-              <a
-                class="platform-link"
-                href="https://github.com/wheelry/meyo-skill-finder"
-                target="_blank"
-                rel="noopener"
-              >
-                <span>
-                  <strong>GitHub</strong>
-                  <span>查看 meyo-skill-finder 的源码与更新</span>
-                </span>
-                <i aria-hidden="true">↗</i>
-              </a>
-              <a
-                class="platform-link"
-                href="https://clawhub.ai/lintong123/skills/meyo-skill-finder"
-                target="_blank"
-                rel="noopener"
-              >
-                <span>
-                  <strong>ClawHub</strong>
-                  <span>在 ClawHub 安装 meyo-skill-finder</span>
-                </span>
-                <i aria-hidden="true">↗</i>
-              </a>
+          <aside class="hero-side" data-reveal aria-label="meyo-skill-finder 体验入口与平台链接">
+            <form class="skill-demo" data-skill-demo>
+              <label for="skill-demo-query">输入你的真实需求，演示推荐 Top5 Skill</label>
+              <div class="skill-demo-row">
+                <textarea
+                  id="skill-demo-query"
+                  name="query"
+                  placeholder="例如：帮我追踪 AI Agent 行业最新新闻，生成带来源的晨报"
+                ></textarea>
+                <button type="submit">推荐 Skill</button>
+              </div>
+              <div class="skill-demo-results" data-skill-demo-results aria-live="polite">
+                <div class="skill-demo-empty">这是演示版：先用 mock 数据模拟 meyo-skill-finder 的推荐结果。</div>
+              </div>
+            </form>
+
+            <div class="hero-links" aria-label="meyo-skill-finder 平台链接">
+              <div class="hero-links-kicker">Published On</div>
+              <div class="platform-links">
+                <a
+                  class="platform-link"
+                  href="https://skillhub.cn/skills/meyo-skill-finder"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span>
+                    <strong>SkillHub</strong>
+                    <span>查看 SkillHub 页面</span>
+                  </span>
+                  <i aria-hidden="true">↗</i>
+                </a>
+                <a
+                  class="platform-link"
+                  href="https://github.com/wheelry/meyo-skill-finder"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span>
+                    <strong>GitHub</strong>
+                    <span>查看源码与更新</span>
+                  </span>
+                  <i aria-hidden="true">↗</i>
+                </a>
+                <a
+                  class="platform-link"
+                  href="https://clawhub.ai/lintong123/skills/meyo-skill-finder"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span>
+                    <strong>ClawHub</strong>
+                    <span>安装技能</span>
+                  </span>
+                  <i aria-hidden="true">↗</i>
+                </a>
+              </div>
             </div>
           </aside>
         </section>
