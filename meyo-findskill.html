@@ -223,6 +223,130 @@
         color: #111812;
       }
 
+      .skill-demo {
+        width: min(100%, 660px);
+        margin-top: 22px;
+        padding: 18px;
+        background: rgba(251, 248, 238, 0.74);
+        border: 1px solid var(--line-dark);
+        box-shadow: 0 18px 46px rgba(28, 32, 24, 0.1);
+      }
+
+      .skill-demo label {
+        display: block;
+        color: var(--green-2);
+        font-size: 15px;
+        font-weight: 950;
+      }
+
+      .skill-demo-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .skill-demo textarea {
+        width: 100%;
+        min-height: 74px;
+        resize: vertical;
+        padding: 13px 14px;
+        border: 1px solid rgba(21, 25, 20, 0.26);
+        background: #fffdf5;
+        color: var(--ink);
+        font: inherit;
+        font-size: 15px;
+        line-height: 1.42;
+        outline: none;
+      }
+
+      .skill-demo textarea:focus {
+        border-color: var(--green-2);
+        box-shadow: 0 0 0 3px rgba(30, 142, 73, 0.14);
+      }
+
+      .skill-demo button {
+        align-self: stretch;
+        min-width: 118px;
+        border: 1px solid var(--charcoal);
+        background: var(--charcoal);
+        color: #f7f1e3;
+        font: inherit;
+        font-size: 15px;
+        font-weight: 950;
+        cursor: pointer;
+      }
+
+      .skill-demo-results {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .skill-demo-empty {
+        padding: 12px 14px;
+        color: #667087;
+        background: rgba(30, 142, 73, 0.07);
+        border: 1px dashed rgba(13, 96, 49, 0.3);
+        font-size: 14px;
+        line-height: 1.45;
+        font-weight: 760;
+      }
+
+      .skill-result {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 14px;
+        background: rgba(255, 253, 245, 0.9);
+        border: 1px solid rgba(21, 25, 20, 0.14);
+      }
+
+      .skill-result.best {
+        background: rgba(111, 232, 95, 0.13);
+        border-color: rgba(13, 96, 49, 0.42);
+      }
+
+      .skill-rank {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        background: var(--charcoal);
+        color: #f7f1e3;
+        font-size: 13px;
+        font-weight: 950;
+      }
+
+      .skill-result.best .skill-rank {
+        background: var(--green-2);
+      }
+
+      .skill-result strong {
+        display: block;
+        color: var(--ink);
+        font-size: 16px;
+        line-height: 1.15;
+      }
+
+      .skill-result p {
+        margin: 4px 0 0;
+        color: #667087;
+        font-size: 13px;
+        line-height: 1.38;
+        font-weight: 720;
+      }
+
+      .best-badge {
+        padding: 6px 8px;
+        background: var(--green-2);
+        color: #f7f1e3;
+        font-size: 12px;
+        font-weight: 950;
+        white-space: nowrap;
+      }
+
       .hero-proof {
         margin-top: 26px;
         display: grid;
@@ -1134,6 +1258,19 @@
           padding: 16px;
         }
 
+        .skill-demo-row,
+        .skill-result {
+          grid-template-columns: 1fr;
+        }
+
+        .skill-demo button {
+          min-height: 48px;
+        }
+
+        .best-badge {
+          width: max-content;
+        }
+
         .hero-proof,
         .problem-grid,
         .metrics,
@@ -1228,6 +1365,21 @@
             <button class="copy-agent-prompt" type="button" data-copy-agent-prompt>
               复制口令给Agent
             </button>
+
+            <form class="skill-demo" data-skill-demo>
+              <label for="skill-demo-query">输入你的真实需求，演示推荐 Top5 Skill</label>
+              <div class="skill-demo-row">
+                <textarea
+                  id="skill-demo-query"
+                  name="query"
+                  placeholder="例如：帮我追踪 AI Agent 行业最新新闻，生成带来源的晨报"
+                ></textarea>
+                <button type="submit">推荐 Skill</button>
+              </div>
+              <div class="skill-demo-results" data-skill-demo-results aria-live="polite">
+                <div class="skill-demo-empty">这是演示版：先用 mock 数据模拟 meyo-skill-finder 的推荐结果。</div>
+              </div>
+            </form>
 
             <div class="hero-proof" aria-label="核心市场数据">
               <div class="proof-item">
